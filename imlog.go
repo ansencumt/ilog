@@ -3,10 +3,10 @@ package ilog
 var logger = Log(new(defaultLogger))
 
 const (
-	// DEBUG 1
-	DEBUG = iota
-	// TRACE 2
-	TRACE
+	// TRACE 1
+	TRACE = iota
+	// DEBUG 2
+	DEBUG
 	// INFO 3
 	INFO
 	// WARN 4
@@ -32,6 +32,7 @@ type Log interface {
 	Errorf(format string, args ...interface{})
 	Panic(format string)
 	Panicf(format string, args ...interface{})
+	SetLevel(level int)
 }
 
 // SetLogger set the Log impl
@@ -52,6 +53,7 @@ func SetLevel(level int) {
 		return
 	}
 	loggerLevel = level
+	logger.SetLevel(level)
 }
 
 func isInLoggerLevel(level int) bool {

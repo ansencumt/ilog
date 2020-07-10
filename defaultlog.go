@@ -76,3 +76,8 @@ func (logger *defaultLogger) Panic(format string) {
 func (logger *defaultLogger) Panicf(format string, args ...interface{}) {
 	log.Fatalf("%s%s", prefixPanic, fmt.Sprintf(format, args...))
 }
+
+// SetLevel 配置logger的大小
+func (logger *defaultLogger) SetLevel(level int) {
+
+}
