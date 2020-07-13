@@ -48,7 +48,7 @@ var loggerLevel = DEBUG
 
 // SetLevel 设置水平
 func SetLevel(level int) {
-	if level < DEBUG || level > PANIC {
+	if level < TRACE || level > PANIC {
 		logger.Errorf("level out of index: %d", level)
 		return
 	}
