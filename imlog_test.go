@@ -21,7 +21,15 @@ func TestDefaultLog(t *testing.T) {
 	Infof(format, "info f")
 	Warnf(format, "warn f")
 	Errorf(format, "error f")
-	Panicf(format, "panic f")
+	// Panicf(format, "panic f")
+
+	format = "this is defautl format msg from ln"
+	Debugln(format, "debug f")
+	Traceln(format, "trace f")
+	Infoln(format, "info f")
+	Warnln(format, "warn f")
+	Errorln(format, "error f")
+	Panicln(format, "panic f")
 
 	SetLevel(INFO)
 }

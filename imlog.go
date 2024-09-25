@@ -21,17 +21,23 @@ const (
 // 5 level: debug, trace, info, warn, error, panic
 type Log interface {
 	Debug(format string)
-	Debugf(format string, args ...interface{})
+	Debugf(format string, args ...any)
+	Debugln(args ...any)
 	Trace(format string)
-	Tracef(format string, args ...interface{})
+	Tracef(format string, args ...any)
+	Traceln(args ...any)
 	Info(format string)
-	Infof(format string, args ...interface{})
+	Infof(format string, args ...any)
+	Infoln(args ...any)
 	Warn(format string)
-	Warnf(format string, args ...interface{})
+	Warnf(format string, args ...any)
+	Warnln(args ...any)
 	Error(format string)
-	Errorf(format string, args ...interface{})
+	Errorf(format string, args ...any)
+	Errorln(args ...any)
 	Panic(format string)
-	Panicf(format string, args ...interface{})
+	Panicf(format string, args ...any)
+	Panicln(args ...any)
 	SetLevel(level int)
 }
 
@@ -72,11 +78,19 @@ func Debug(format string) {
 }
 
 // Debugf write the debug msg
-func Debugf(format string, args ...interface{}) {
+func Debugf(format string, args ...any) {
 	if !isInLoggerLevel(DEBUG) {
 		return
 	}
 	logger.Debugf(format, args...)
+}
+
+// Debugln write the debug msg
+func Debugln(args ...any) {
+	if !isInLoggerLevel(DEBUG) {
+		return
+	}
+	logger.Debugln(args...)
 }
 
 // Trace write the trace msg
@@ -88,11 +102,19 @@ func Trace(format string) {
 }
 
 // Tracef write the trace msg
-func Tracef(format string, args ...interface{}) {
+func Tracef(format string, args ...any) {
 	if !isInLoggerLevel(TRACE) {
 		return
 	}
 	logger.Tracef(format, args...)
+}
+
+// Traceln write the trace msg
+func Traceln(args ...any) {
+	if !isInLoggerLevel(TRACE) {
+		return
+	}
+	logger.Traceln(args...)
 }
 
 // Info write the info msg
@@ -104,11 +126,19 @@ func Info(format string) {
 }
 
 // Infof write the info msg
-func Infof(format string, args ...interface{}) {
+func Infof(format string, args ...any) {
 	if !isInLoggerLevel(INFO) {
 		return
 	}
 	logger.Infof(format, args...)
+}
+
+// Infoln write the info msg
+func Infoln(args ...any) {
+	if !isInLoggerLevel(INFO) {
+		return
+	}
+	logger.Infoln(args...)
 }
 
 // Warn write the warn msg
@@ -120,11 +150,19 @@ func Warn(format string) {
 }
 
 // Warnf write the warn msg
-func Warnf(format string, args ...interface{}) {
+func Warnf(format string, args ...any) {
 	if !isInLoggerLevel(WARN) {
 		return
 	}
 	logger.Warnf(format, args...)
+}
+
+// Warnf write the warn msg
+func Warnln(args ...any) {
+	if !isInLoggerLevel(WARN) {
+		return
+	}
+	logger.Warnln(args...)
 }
 
 // Error write the error msg
@@ -136,11 +174,19 @@ func Error(format string) {
 }
 
 // Errorf write the error msg
-func Errorf(format string, args ...interface{}) {
+func Errorf(format string, args ...any) {
 	if !isInLoggerLevel(ERROR) {
 		return
 	}
 	logger.Errorf(format, args...)
+}
+
+// Errorln write the error msg
+func Errorln(args ...any) {
+	if !isInLoggerLevel(ERROR) {
+		return
+	}
+	logger.Errorln(args...)
 }
 
 // Panic write the panic msg
@@ -152,9 +198,17 @@ func Panic(format string) {
 }
 
 // Panicf write the panic msg
-func Panicf(format string, args ...interface{}) {
+func Panicf(format string, args ...any) {
 	if !isInLoggerLevel(PANIC) {
 		return
 	}
 	logger.Panicf(format, args...)
+}
+
+// Panicln write the panic msg
+func Panicln(args ...any) {
+	if !isInLoggerLevel(PANIC) {
+		return
+	}
+	logger.Panicln(args...)
 }
