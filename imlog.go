@@ -1,10 +1,14 @@
 package ilog
 
+import (
+	"fmt"
+)
+
 var logger = Log(new(defaultLogger))
 
 const (
 	// TRACE 1
-	TRACE = iota
+	TRACE = iota + 1
 	// DEBUG 2
 	DEBUG
 	// INFO 3
@@ -15,6 +19,21 @@ const (
 	ERROR
 	// PANIC 6
 	PANIC
+)
+
+const (
+	// TRACE 1
+	TraceStr = "trace"
+	// DEBUG 2
+	DebugStr = "debug"
+	// INFO 3
+	InfoStr = "info"
+	// WARN 4
+	WarnStr = "warn"
+	// ERROR 5
+	ErrorStr = "error"
+	// PANIC 6
+	PanicStr = "painc"
 )
 
 // Log the interface use in im
@@ -50,16 +69,46 @@ func SetLogger(l Log) {
 	}
 }
 
-var loggerLevel = DEBUG
+var loggerLevel = INFO
 
 // SetLevel 设置水平
-func SetLevel(level int) {
+func SetLevel(level int) error {
 	if level < TRACE || level > PANIC {
 		logger.Errorf("level out of index: %d", level)
-		return
+		return fmt.Errorf("level out of index: 1 to 6, but %d", level)
 	}
 	loggerLevel = level
 	logger.SetLevel(level)
+	return nil
+}
+
+// SetLevel 设置水平
+func SetLevelWithString(levelStr string) error {
+	level := ERROR
+
+	switch levelStr {
+	case TraceStr:
+		level = TRACE
+		break
+	case DebugStr:
+		level = DEBUG
+		break
+	case InfoStr:
+		level = INFO
+		break
+	case WarnStr:
+		level = WARN
+		break
+	case PanicStr:
+		level = PANIC
+		break
+	default:
+		logger.Errorf("level out of index: %d", level)
+		return fmt.Errorf("level string is trace, debug, info, warn, panic, but %s", levelStr)
+	}
+	loggerLevel = level
+	logger.SetLevel(level)
+	return nil
 }
 
 func isInLoggerLevel(level int) bool {
