@@ -71,6 +71,28 @@ func SetLogger(l Log) {
 
 var loggerLevel = INFO
 
+func GetLevel() int {
+	return loggerLevel
+}
+
+func GetLevelString() string {
+	switch loggerLevel {
+	case TRACE:
+		return TraceStr
+	case DEBUG:
+		return DebugStr
+	case INFO:
+		return InfoStr
+	case WARN:
+		return WarnStr
+	case ERROR:
+		return ErrorStr
+	case PANIC:
+		return PanicStr
+	}
+	return "unknow"
+}
+
 // SetLevel 设置水平
 func SetLevel(level int) error {
 	if level < TRACE || level > PANIC {
