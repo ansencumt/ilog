@@ -57,7 +57,7 @@ type Log interface {
 	Panic(format string)
 	Panicf(format string, args ...any)
 	Panicln(args ...any)
-	SetLevel(level int)
+	// SetLevel(level int)
 }
 
 // SetLogger set the Log impl
@@ -100,7 +100,7 @@ func SetLevel(level int) error {
 		return fmt.Errorf("level out of index: 1 to 6, but %d", level)
 	}
 	loggerLevel = level
-	logger.SetLevel(level)
+	// logger.SetLevel(level)
 	return nil
 }
 
@@ -129,7 +129,7 @@ func SetLevelWithString(levelStr string) error {
 		return fmt.Errorf("level string is trace, debug, info, warn, panic, but %s", levelStr)
 	}
 	loggerLevel = level
-	logger.SetLevel(level)
+	// logger.SetLevel(level)
 	return nil
 }
 
