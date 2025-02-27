@@ -1,10 +1,10 @@
-package gologger
+package ilog
 
 import (
 	"github.com/donnie4w/go-logger/logger"
 )
 
-func NewLogger(logMonitor *logger.Logging) *GoLoggerWrapper {
+func NewGoLogger(logMonitor *logger.Logging) *GoLoggerWrapper {
 	if logMonitor == nil {
 		logMonitor = logger.NewLogger()
 	}
