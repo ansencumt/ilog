@@ -69,6 +69,10 @@ func SetLogger(l Log) {
 	}
 }
 
+func GetLogger() Log {
+	return ilogger
+}
+
 var loggerLevel = INFO
 
 func GetLevel() int {
