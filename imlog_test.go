@@ -2,6 +2,8 @@ package ilog
 
 import (
 	"testing"
+
+	"ilog/wrapper/paylogger"
 )
 
 func TestDefaultLog(t *testing.T) {
@@ -35,7 +37,7 @@ func TestDefaultLog(t *testing.T) {
 }
 
 func TestGoLogger(t *testing.T) {
-	gl := NewGoLogger(nil)
+	gl := paylogger.NewGoLoggerWrapper(nil)
 	SetLogger(gl)
 	Debug("this is defautl debug msg")
 	Trace("this is defautl trace msg")

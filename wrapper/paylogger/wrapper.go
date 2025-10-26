@@ -1,10 +1,10 @@
-package ilog
+package paylogger
 
 import (
 	"github.com/donnie4w/go-logger/logger"
 )
 
-func NewGoLogger(logMonitor *logger.Logging) *GoLoggerWrapper {
+func NewGoLoggerWrapper(logMonitor *logger.Logging) *GoLoggerWrapper {
 	if logMonitor == nil {
 		logMonitor = logger.NewLogger()
 	}

@@ -115,19 +115,14 @@ func SetLevelWithString(levelStr string) error {
 	switch levelStr {
 	case TraceStr:
 		level = TRACE
-		break
 	case DebugStr:
 		level = DEBUG
-		break
 	case InfoStr:
 		level = INFO
-		break
 	case WarnStr:
 		level = WARN
-		break
 	case PanicStr:
 		level = PANIC
-		break
 	default:
 		ilogger.Errorf("level out of index: %d", level)
 		return fmt.Errorf("level string is trace, debug, info, warn, panic, but %s", levelStr)
