@@ -1,21 +1,26 @@
 package paylogger
 
-import "github.com/donnie4w/go-logger/logger"
+import (
+	imlogger "github.com/ansencumt/ilog/v2/logger"
+
+	"github.com/donnie4w/go-logger/logger"
+)
 
 type LoggerOption struct {
-	Level     string `yaml:"level"`
-	Output    string `yaml:"output"`
-	Path      string `yaml:"path"`
-	TimeMode  string `yaml:"time-mode"`
-	MaxSizeMB int    `yaml:"max-size-mb"`
-	MaxBackup int    `yaml:"max-backup"`
-	Compress  bool   `yaml:"compress"`
+	Level     imlogger.LoggerLevelName `yaml:"level"`
+	Output    string                   `yaml:"output"`
+	Path      string                   `yaml:"path"`
+	TimeMode  string                   `yaml:"time-mode"`
+	MaxSizeMB int                      `yaml:"max-size-mb"`
+	MaxBackup int                      `yaml:"max-backup"`
+	Compress  bool                     `yaml:"compress"`
 }
 
 func NewGoLogger(option LoggerOption) *logger.Logging {
 	goption := &logger.Option{
 		Format:  logger.FORMAT_LEVELFLAG | logger.FORMAT_DATE | logger.FORMAT_TIME,
 		Console: true,
+		Level:   logger.LEVEL_INFO,
 	}
 	if option.Output == "file" {
 		fileOption := &logger.FileMixedMode{
@@ -40,5 +45,9 @@ func NewGoLogger(option LoggerOption) *logger.Logging {
 		goption.Console = false
 	}
 
+	if option.Level != "" {
+		goLevel := convertLevel(option.Level.Level())
+		goption.Level = goLevel
+	}
 	return logger.NewLogger().SetOption(goption)
 }

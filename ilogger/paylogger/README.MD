@@ -1,3 +1,5 @@
+github 地址： https://github.com/donnie4w/go-logger
+
 配置如下：
 
 ```yaml
