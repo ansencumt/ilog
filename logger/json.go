@@ -9,9 +9,9 @@ type IJson interface {
 	JSON(obj any) string
 }
 
-type defaultJson struct{}
+type DefaultJson struct{}
 
-func (d *defaultJson) JSON(obj any) string {
+func (d *DefaultJson) JSON(obj any) string {
 	if obj == nil {
 		return "null"
 	}
@@ -24,10 +24,4 @@ func (d *defaultJson) JSON(obj any) string {
 
 	// 失败兜底：Go 原生打印
 	return fmt.Sprintf("%+v", obj)
-}
-
-var djsoner IJson = &defaultJson{}
-
-func JSON(obj any) string {
-	return djsoner.JSON(obj)
 }

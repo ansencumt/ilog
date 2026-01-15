@@ -138,3 +138,9 @@ func Panicf(format string, args ...any) {
 func Panicln(args ...any) {
 	ilogger.Panicln(args...)
 }
+
+var djsoner logger.IJson = &logger.DefaultJson{}
+
+func JSON(obj any) string {
+	return djsoner.JSON(obj)
+}
