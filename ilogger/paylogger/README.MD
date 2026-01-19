@@ -18,7 +18,13 @@ log:
 - path 输出路径
 - time-mode:
   - day: 按天分隔
-  -
+  - hour: 按小时
+  - month: 按月（默认）
+- max-size-mb 文件最大大小，超过该大小时进行切割
+- max-backup 保留的最大备份文件数量
+- compress 是否启用备份文件的压缩
+
+配置时间和文件大小后，都会按时间或文件大小进行分割
 
 Struct 如下：
 
